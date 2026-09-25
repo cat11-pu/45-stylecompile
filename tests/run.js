@@ -3,8 +3,10 @@ import { compile } from "../compile.js";
 import { recompile } from "../invalidate.js";
 import { render } from "../app.js";
 
+let total = 0;
 let failed = 0;
 function check(name, fn) {
+  total += 1;
   try { fn(); console.log("ok " + name); } catch (e) { failed += 1; console.log("FAIL " + name + " :: " + e.message); }
 }
 
@@ -31,5 +33,12 @@ check("render exposes consistent flag", () => {
   assert.strictEqual(typeof render({ rules: rules, elements: elements, changed_rule: "r0", budget: 4 }).consistent, "boolean");
 });
 
-console.log("5 cases, " + failed + " failed");
+check("compile rejects unknown selector with E_UNKNOWN_SELECTOR", () => {
+  assert.throws(
+    () => compile([{ id: "rx", selector: { weird: true } }], elements),
+    (error) => error.code === "E_UNKNOWN_SELECTOR"
+  );
+});
+
+console.log(total + " cases, " + failed + " failed");
 process.exit(failed === 0 ? 0 : 1);
