@@ -1,0 +1,17 @@
+{
+  "unknown_code": "E_UNKNOWN_SELECTOR",
+  "budget": 3,
+  "changed_rule": "r1",
+  "rules": [
+    {"id": "r0", "selector": {"tag": "p"}, "props": {"bg": "grey"}},
+    {"id": "r1", "selector": {"classes": ["hot"]}, "props": {"bg": "red"}},
+    {"id": "r2", "selector": {"tag": "p", "classes": ["hot"]}, "props": {"bg": "orange"}},
+    {"id": "r3", "selector": {"tag": "div"}, "props": {"bg": "blue"}}
+  ],
+  "elements": [
+    {"id": "e0", "tag": "p", "classes": []},
+    {"id": "e1", "tag": "p", "classes": ["hot"]},
+    {"id": "e2", "tag": "div", "classes": ["hot"]},
+    {"id": "e3", "tag": "span", "classes": []}
+  ]
+}
