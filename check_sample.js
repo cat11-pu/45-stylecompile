@@ -13,9 +13,9 @@ const full = compile(spec.rules, spec.elements);
 const grown = recompile(spec.rules, spec.elements, spec.changed_rule, spec.budget);
 const view = render(spec);
 
-emit("每个元素的胜出规则 =", JSON.stringify(full.matched));
-emit("重编译的规则 =", JSON.stringify(grown.recompiled));
-emit("受影响的元素 =", JSON.stringify(grown.invalidated));
+emit("每个元素的胜出规则 =", full.matched);
+emit("重编译的规则 =", grown.recompiled);
+emit("受影响的元素 =", grown.invalidated);
 emit("预算消耗 =", grown.used);
 emit("增量是否与全量一致 =", view.consistent);
 emit("未知选择器的错误码 =", spec.unknown_code);
